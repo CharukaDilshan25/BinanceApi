@@ -5,6 +5,10 @@ const store = configureStore({
   reducer: {
     crypto: cryptoReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;

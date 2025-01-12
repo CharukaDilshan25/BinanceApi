@@ -16,17 +16,14 @@ export const fetchPriceData = createAsyncThunk(
     const endTime = new Date(endDate).getTime();
     const interval = '1d';
 
-    const response = await axios.get(
-      `https://api.binance.com/api/v3/klines`,
-      {
-        params: {
-          symbol: currencyPair,
-          interval,
-          startTime,
-          endTime,
-        },
-      }
-    );
+    const response = await axios.get(`https://api.binance.com/api/v3/klines`, {
+      params: {
+        symbol: currencyPair,
+        interval,
+        startTime,
+        endTime,
+      },
+    });
 
     return response.data.map(([time, open, high, low, close]) => ({
       date: new Date(time).toLocaleDateString('en-GB'),
@@ -48,7 +45,7 @@ const cryptoSlice = createSlice({
         startDate: startDate ? new Date(startDate).toISOString() : null,
         endDate: endDate ? new Date(endDate).toISOString() : null,
       };
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
