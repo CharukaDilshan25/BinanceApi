@@ -6,12 +6,12 @@ import { setDateRange } from '../Store/cryptoSlice';
 
 const DateSelector = () => {
   const dispatch = useDispatch();
-  const [dateRange, setDateRangeLocal] = useState([null, null]); // Holds start and end dates
+  const [dateRange, setDateRangeLocal] = useState([null, null]); 
   const [startDate, endDate] = dateRange;
 
   const handleDateChange = (dates) => {
     const [start, end] = dates;
-    setDateRangeLocal(dates); // Update local state
+    setDateRangeLocal(dates); 
     dispatch(setDateRange({ startDate: start, endDate: end })); // Dispatch to Redux
   };
 
